@@ -1,4 +1,9 @@
 # Ext.ux.grid.plugin.PagingSelectionPersistence
+
+## ExtJs working version
+ExtJs 6
+
+
 Grid PagingSelectionPersistence plugin
 
 Maintains row selection state when moving between pages of a paginated grid
