@@ -10,11 +10,9 @@ all pages
 {@link http://www.sencha.com/forum/showthread.php?263871-Selection-of-records-over-multiple-pages-in-a-grid-Select-All}
 
 Antoine Verron :
-
-<pre> 
 - add getPersistedSelection method to the grid 
 - put selection and selected in instance attribute instead of class attribute
-</pre>
+
 
 @class Ext.ux.grid.plugin.PagingSelectionPersistence
 @extends Ext.AbstractPlugin
