@@ -38,7 +38,7 @@ Ext.define('Ext.ux.grid.plugin.PagingSelectionPersistence', {
         me.grid = grid;
         me.selModel = me.grid.getSelectionModel();
         me.isCheckboxModel = me.selModel.$className == 'Ext.selection.CheckboxModel';
-        me.origOnHeaderClick = me.selModel.onHeaderClick;
+        // me.origOnHeaderClick = me.selModel.onHeaderClick; // NOT NEEDED ANYMORE in ExtJs 6
         me.bindListeners();
 
         // Psycho
@@ -69,20 +69,21 @@ Ext.define('Ext.ux.grid.plugin.PagingSelectionPersistence', {
             });
 
             if (me.isCheckboxModel) {
-                //For CheckboxModel, we need to detect when the header deselect/select page checkbox
-                //is clicked, to make sure the plugin's selection array is updated. This is because Ext.selection.CheckboxModel
-                //interally supresses event firings for selectAll/deselectAll when its clicked
-                me.selModel.onHeaderClick = function(headerCt, header, e) {
-                    var isChecked = header.el.hasCls(Ext.baseCSSPrefix + 'grid-hd-checker-on');
-                    me.origOnHeaderClick.apply(me, arguments);
-
-                    if (isChecked) {
-                        me.onDeselectPage();
-                    }
-                    else {
-                        me.onSelectPage();
-                    }
-                };
+                // NOT NEEDED ANYMORE in ExtJs 6
+                //                //For CheckboxModel, we need to detect when the header deselect/select page checkbox
+                //                //is clicked, to make sure the plugin's selection array is updated. This is because Ext.selection.CheckboxModel
+                //                //interally supresses event firings for selectAll/deselectAll when its clicked
+                //                me.selModel.onHeaderClick = function(headerCt, header, e) {
+                //                    var isChecked = header.el.hasCls(Ext.baseCSSPrefix + 'grid-hd-checker-on');
+                //                    me.origOnHeaderClick.apply(me, arguments);
+                //
+                //                    if (isChecked) {
+                //                        me.onDeselectPage();
+                //                    }
+                //                    else {
+                //                        me.onSelectPage();
+                //                    }
+                //                };
             }
         }
 
@@ -96,7 +97,7 @@ Ext.define('Ext.ux.grid.plugin.PagingSelectionPersistence', {
             me.grid.getView().un('refresh', me.onViewRefresh, me);
             me.selModel.un('select', me.onRowSelect, me);
             me.selModel.un('deselect', me.onRowDeselect, me);
-            me.selModel.onHeaderClick = me.origOnHeaderClick;
+            // me.selModel.onHeaderClick = me.origOnHeaderClick;
         }
 
         me.callParent();
@@ -271,7 +272,7 @@ Ext.define('Ext.ux.grid.plugin.PagingSelectionPersistence', {
             scope: this
         });
 
-        this.selectRecord(rec);
+        // this.selectRecord(rec);
     },
 
     countAll: function() {
